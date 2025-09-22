@@ -40,12 +40,12 @@ body {
    Header
    ========================= */
 .gradient-bg {
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    background: #004b32;
     color: #fff;
 }
 
 header {
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
     text-align: center;
 }
 
@@ -96,17 +96,18 @@ header {
     box-shadow: 0 14px 28px rgba(0,0,0,.12);
 }
 
-.lotto-card:focus-visible {
-    box-shadow: 0 0 0 4px rgba(59,130,246,.4);
+.lotto-card[data-lotto="regularLotto"].is-selected {
+    box-shadow: 0 0 0 4px rgb(197, 0, 5),
+    0 10px 20px rgba(0,0,0,.08);
 }
 
-.lotto-card.is-selected {
-    box-shadow: 0 0 0 4px rgba(59,130,246,.5),
+.lotto-card[data-lotto="viking"].is-selected {
+    box-shadow: 0 0 0 4px rgb(0, 0, 255), /* matcher din .vikingNumber-ball */
     0 10px 20px rgba(0,0,0,.08);
 }
 
 .lotto-card[data-lotto="euro"].is-selected {
-    box-shadow: 0 0 0 4px rgba(236,72,153,.5),
+    box-shadow: 0 0 0 4px rgb(232, 163, 50),
     0 10px 20px rgba(0,0,0,.08);
 }
 
@@ -125,11 +126,11 @@ header {
     box-shadow: 0 4px 8px rgba(0,0,0,.12);
 }
 
-.regularLotto-ball { background: linear-gradient(135deg, #993737, #c50005); }
-.viking-ball       { background: linear-gradient(135deg, #4facfe, #0000ff); }
+.regularLotto-ball { background: linear-gradient(135deg, #fb8488, #c50005); }
+.viking-ball       { background: linear-gradient(135deg, #8585ff, #0000ff); }
 .vikingNumber-ball { background: #050636; }
-.euro-ball         { background: linear-gradient(135deg, #8a672f, #e8a332); }
-.star-ball         { background: #edd8a0; }
+.euro-ball         { background: linear-gradient(135deg, #ffd18a, #e8a332); }
+.star-ball         { background: #59411a; }
 
 /* =========================
    Knapper
@@ -149,7 +150,7 @@ header {
 }
 
 .btn:active { transform: translateY(1px); }
-.btn-gradient { background: linear-gradient(135deg, #6e8efb, #a777e3); }
+.btn-gradient { background: #004b32; }
 .btn:hover { opacity: .9; }
 
 /* =========================
