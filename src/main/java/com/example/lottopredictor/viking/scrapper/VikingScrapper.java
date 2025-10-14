@@ -1,8 +1,7 @@
-package com.example.lottopredictor.scrapper;
+package com.example.lottopredictor.viking.scrapper;
 
-import com.example.lottopredictor.model.Regular;
-
-import com.example.lottopredictor.service.RegularService;
+import com.example.lottopredictor.viking.model.Viking;
+import com.example.lottopredictor.viking.service.VikingService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -19,16 +18,16 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
-public class RegularScrapper {
+public class VikingScrapper {
 
-    private final RegularService regularService;
-    private static final String url = "https://danskespil.dk/lotto/statistik/favorittal";
+    private final VikingService vikingService;
+    private static final String url = "https://danskespil.dk/vikinglotto/statistik/favorittal";
 
-    public RegularScrapper(RegularService regularService) {
-        this.regularService = regularService;
+    public VikingScrapper(VikingService vikingService) {
+        this.vikingService = vikingService;
     }
 
-    public List<Regular> fetchRegularData() {
+    public List<Viking> fetchVikingData() {
         ChromeOptions opts = new ChromeOptions();
         // headless + lidt “realistiske” flag
         opts.addArguments("--headless=new", "--no-sandbox", "--disable-gpu",
@@ -48,7 +47,7 @@ public class RegularScrapper {
                             By.cssSelector("div[data-number]"))
             );
 
-            List<Regular> out = new ArrayList<>();
+            List<Viking> out = new ArrayList<>();
             for (WebElement card : cards) {
                 // tallet (i “kuglen”) – vælg en robust locator
                 String numberTxt = "";
@@ -74,13 +73,13 @@ public class RegularScrapper {
                 if (!numberTxt.isEmpty() && !countTxt.isEmpty()) {
                     int number = Integer.parseInt(numberTxt);
                     int count  = Integer.parseInt(countTxt);
-                    Regular r = new Regular(number, count);
-                    regularService.save(r);
-                    out.add(r);
+                    Viking v = new Viking(number, count);
+                    vikingService.save(v);
+                    out.add(v);
                 }
             }
 
-            out.sort(Comparator.comparing(Regular::getNumber));
+            out.sort(Comparator.comparing(Viking::getNumber));
             return out;
 
         } finally {

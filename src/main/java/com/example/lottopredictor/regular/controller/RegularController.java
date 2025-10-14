@@ -1,8 +1,8 @@
-package com.example.lottopredictor.controller;
+package com.example.lottopredictor.regular.controller;
 
-import com.example.lottopredictor.model.Regular;
-import com.example.lottopredictor.scrapper.RegularScrapper;
-import com.example.lottopredictor.service.RegularService;
+import com.example.lottopredictor.regular.model.Regular;
+import com.example.lottopredictor.regular.scrapper.RegularScrapper;
+import com.example.lottopredictor.regular.service.RegularService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +17,14 @@ import java.util.List;
 public class RegularController {
 
     private final RegularScrapper regularScrapper;
+    private final RegularService regularService;
 
-    @Autowired
-    RegularService regularService;
-
-    public RegularController(RegularScrapper regularScrapper) {
+    public RegularController(RegularScrapper regularScrapper, RegularService regularService) {
         this.regularScrapper = regularScrapper;
+        this.regularService = regularService;
     }
 
-    @GetMapping("/regular")
+    @GetMapping("/regulars")
     public ResponseEntity<List<Regular>> findAll() {
         return new ResponseEntity<>(regularService.findAll(), HttpStatus.OK);
     }

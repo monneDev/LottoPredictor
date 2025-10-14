@@ -1,4 +1,4 @@
-package com.example.lottopredictor.model;
+package com.example.lottopredictor.regular.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
