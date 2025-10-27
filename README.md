@@ -5,7 +5,7 @@ It’s not meant for production; the goal is to practice headless browser automa
 
 ⚠️ Educational use only. Website structure may change without notice, and scraping can break.
 
-What it does
+What it does:
 
 Starts a Spring Boot REST API.
 
@@ -17,7 +17,7 @@ Persists results via Spring Data JPA (H2/MySQL).
 
 Exposes endpoints to fetch/scrape and to read stored data.
 
-Tech stack
+Tech stack:
 
 Java 21
 
@@ -25,11 +25,9 @@ Spring Boot 3.5.x (Web, Data JPA)
 
 Selenium 4.x (using Selenium Manager – no WebDriverManager needed)
 
-Jsoup (optional, for parsing rendered HTML if desired)
-
 H2/MySQL (choose one via config)
 
-Requirements
+Requirements:
 
 Java 21
 
